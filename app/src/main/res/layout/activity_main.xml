@@ -16,7 +16,6 @@
 
 
 
-
     <TextView
         android:fontFamily="@font/gil_bold"
         android:textColor="@color/head_text"
