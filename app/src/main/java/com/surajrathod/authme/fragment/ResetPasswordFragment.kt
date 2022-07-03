@@ -1,9 +1,11 @@
 package com.surajrathod.authme.fragment
 
 import android.app.Dialog
+import android.content.ContentValues.TAG
 import android.content.Context
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -34,6 +36,8 @@ class ResetPasswordFragment : Fragment() {
     lateinit var verify_otp: Button
     lateinit var binding : FragmentResetPasswordBinding
     lateinit var edit : Array<EditText>
+    lateinit var password : EditText
+    lateinit var confirmPassword : EditText
 
     lateinit var d : LoadingScreen
     lateinit var dd : Dialog
@@ -68,16 +72,17 @@ class ResetPasswordFragment : Fragment() {
         otp_textbox_three.addTextChangedListener(GenericTextWatcher(otp_textbox_three, edit))
         otp_textbox_four.addTextChangedListener(GenericTextWatcher(otp_textbox_four, edit))
 
-        val password = binding.etPassword
-        val confirmPassword = binding.etConfirmPassword
+         password = binding.etPassword
+         confirmPassword = binding.etConfirmPassword
 
         verify_otp.setOnClickListener {
             if(!isDataFillled(password))else if(!isDataFillled(confirmPassword))else{
+
                 if(isEnteredOtp()){
                     email = arguments?.get("email") as String?
-                    Toast.makeText(activity, "$email", Toast.LENGTH_SHORT).show()
+//                    Toast.makeText(activity, "$email", Toast.LENGTH_SHORT).show()
                     d.toggleDialog(dd)
-                    verifyAndResetPassword(confirmPassword)
+                    verifyAndResetPassword()
                 }else{
                     Snackbar.make(view, "Please Enter OTP", 1000).show()
                 }
@@ -87,7 +92,7 @@ class ResetPasswordFragment : Fragment() {
     }
     fun isDataFillled(view: TextView) : Boolean{
         if (TextUtils.isEmpty(view.text.toString().trim() { it <= ' ' })) {
-            Snackbar.make(view, "Fill up Fields", 1000).show()
+            Snackbar.make(view, "Fields are empty", 1000).show()
             return false
         }
         return true
@@ -101,13 +106,14 @@ class ResetPasswordFragment : Fragment() {
        edit.forEach {
            otp+=GetInput.takeFrom(it)
        }
-        Toast.makeText(activity, "$otp", Toast.LENGTH_SHORT).show()
+//        Toast.makeText(activity, "$otp", Toast.LENGTH_SHORT).show()
         return true
     }
-    fun verifyAndResetPassword(confirmPassword : EditText){
+    fun verifyAndResetPassword(){
         lifecycleScope.launch{
             try {
-                val newpass = binding.etConfirmPassword.text.toString()
+                val newpass = confirmPassword.text.toString()
+//                Log.d(TAG, "$email $otp $newpass")
                 val response = NetworkService.networkInstance.resetPassword(email!!,otp!!,newpass)
                 onSimpleResponse("Reset",response)
             }catch (e : Exception){
