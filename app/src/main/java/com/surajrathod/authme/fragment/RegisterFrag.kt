@@ -21,10 +21,7 @@ import com.surajrathod.authme.model.SimpleResponse
 import com.surajrathod.authme.network.NetworkService
 import com.surajrathod.authme.util.ExceptionHandler
 import com.surajrathod.authme.util.LoadingScreen
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 class RegisterFrag : Fragment() {
 
@@ -63,7 +60,6 @@ class RegisterFrag : Fragment() {
                 binding.ETEmail -> Snackbar.make(view, "Email is required", 1000).show()
                 binding.ETPassword -> Snackbar.make(view, "Password is required", 1000).show()
             }
-
             return false
         }
         return true
@@ -73,17 +69,18 @@ class RegisterFrag : Fragment() {
        lifecycleScope.launch {
            try{
                val register =NetworkService.networkInstance.registerUser(RegisterReq(firstName,lastName,email,password))
-               onRegistrationStatus(register)
+               onSimpleResponse("Registration",register)
            }catch (e : Exception){
                activity?.let { ExceptionHandler.catchOnContext(it, e) }
                d.toggleDialog(dd)
            }
        }
     }
-    fun onRegistrationStatus(simpleResponse: SimpleResponse ){
+    fun onSimpleResponse(task:String,simpleResponse: SimpleResponse ){
         if(simpleResponse.success){
             d.toggleDialog(dd)  // hide
-            Toast.makeText(activity, "Registration Successful", Toast.LENGTH_SHORT).show()
+            Toast.makeText(activity, "$task Successful", Toast.LENGTH_SHORT).show()
+            findNavController().navigate(R.id.action_registerFrag_to_loginFrag)
         }else{
             d.toggleDialog(dd)  // hide
             Toast.makeText(activity, simpleResponse.message, Toast.LENGTH_SHORT).show()
