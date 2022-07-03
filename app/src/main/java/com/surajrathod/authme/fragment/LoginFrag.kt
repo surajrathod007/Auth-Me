@@ -75,7 +75,7 @@ class LoginFrag : Fragment() {
         if(simpleResponse.success){
             d.toggleDialog(dd)  // hide
             Toast.makeText(activity, "$task Successful", Toast.LENGTH_SHORT).show()
-            // TODO : Navigation to Dashboard
+            // TODO : Navigation to ProfileActivity / DashboardActivity
         }else{
             d.toggleDialog(dd)  // hide
             Toast.makeText(activity, simpleResponse.message, Toast.LENGTH_SHORT).show()

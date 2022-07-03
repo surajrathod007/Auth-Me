@@ -26,6 +26,8 @@ class ForgotPasswordFragment : Fragment() {
     private lateinit var binding : FragmentForgotPasswordBinding
     lateinit var d : LoadingScreen
     lateinit var dd : Dialog
+
+    var email : String? = null
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -40,7 +42,8 @@ class ForgotPasswordFragment : Fragment() {
                 d.toggleDialog(dd)
                     lifecycleScope.launch{
                         try {
-                            val response = NetworkService.networkInstance.sendOtp(binding.ETEmail.text.toString())
+                            email = binding.ETEmail.text.toString()
+                            val response = NetworkService.networkInstance.sendOtp(email!!)
                             onSimpleResponse("Sent",response)
                         }catch (e : Exception){
                             activity?.let { ExceptionHandler.catchOnContext(it, e) }
@@ -58,7 +61,9 @@ class ForgotPasswordFragment : Fragment() {
         if(simpleResponse.success){
             d.toggleDialog(dd)  // hide
             Toast.makeText(activity, "$task Successful", Toast.LENGTH_SHORT).show()
-            findNavController().navigate(R.id.action_forgotPasswordFragment_to_resetPasswordFragment)
+            val bundle = Bundle()
+            bundle.putString("email",email)
+            findNavController().navigate(R.id.action_forgotPasswordFragment_to_resetPasswordFragment,bundle)
         }else{
             d.toggleDialog(dd)  // hide
             Toast.makeText(activity, simpleResponse.message, Toast.LENGTH_SHORT).show()
