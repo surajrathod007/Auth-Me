@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginHorizontal="8dp"
+        android:layout_marginVertical="4dp">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvUserName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Orders"
+            android:layout_gravity="center_vertical"
+            android:layout_marginHorizontal="16dp"
+            android:textSize="18sp"
+            />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:background="@drawable/ic_arrow"
+            android:layout_gravity="end|center_vertical"
+            android:layout_margin="8dp"/>
+
+    </androidx.cardview.widget.CardView>
+
+
+</FrameLayout>

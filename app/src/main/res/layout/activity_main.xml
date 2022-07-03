@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,153 +8,158 @@
     android:padding="14dp"
     tools:context=".MainActivity">
 
-    <androidx.appcompat.widget.LinearLayoutCompat
+<!--    <androidx.appcompat.widget.LinearLayoutCompat-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:orientation="vertical">-->
+
+
+
+
+<!--    <TextView-->
+<!--        android:fontFamily="@font/gil_bold"-->
+<!--        android:textColor="@color/head_text"-->
+<!--        android:gravity="center"-->
+<!--        android:textSize="40sp"-->
+<!--        android:text="Welcome To \nAuth Me"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"/>-->
+
+<!--    <TextView-->
+<!--        android:textStyle="bold"-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        android:fontFamily="@font/gil_light"-->
+<!--        android:text="Register Your Self"-->
+<!--        android:gravity="center"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginBottom="30dp"/>-->
+
+<!--    <TextView-->
+<!--        android:text="First Name"-->
+<!--        android:textSize="16sp"-->
+<!--        android:textStyle="bold"-->
+<!--        android:fontFamily="@font/gil_light"-->
+<!--        android:textColor="@color/title_text"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"/>-->
+
+<!--    <androidx.appcompat.widget.AppCompatEditText-->
+<!--        android:textSize="14sp"-->
+<!--        android:fontFamily="@font/gil_light"-->
+<!--        android:textStyle="bold"-->
+<!--        android:textColor="@color/title_text"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"/>-->
+
+<!--    <TextView-->
+<!--        android:textSize="16sp"-->
+<!--        android:layout_marginTop="10dp"-->
+<!--        android:text="Last Name"-->
+<!--        android:textStyle="bold"-->
+<!--        android:fontFamily="@font/gil_light"-->
+<!--        android:textColor="@color/title_text"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"/>-->
+
+<!--    <androidx.appcompat.widget.AppCompatEditText-->
+<!--        android:textSize="14sp"-->
+<!--        android:fontFamily="@font/gil_light"-->
+<!--        android:textStyle="bold"-->
+<!--        android:textColor="@color/title_text"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"/>-->
+
+<!--        <TextView-->
+<!--            android:textSize="16sp"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            android:text="Email Address"-->
+<!--            android:textStyle="bold"-->
+<!--            android:fontFamily="@font/gil_light"-->
+<!--            android:textColor="@color/title_text"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"/>-->
+
+
+<!--        <androidx.appcompat.widget.AppCompatEditText-->
+<!--            android:textSize="14sp"-->
+<!--            android:fontFamily="@font/gil_light"-->
+<!--            android:textStyle="bold"-->
+<!--            android:textColor="@color/title_text"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"/>-->
+
+<!--        <TextView-->
+<!--            android:textSize="16sp"-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            android:text="Password"-->
+<!--            android:textStyle="bold"-->
+<!--            android:fontFamily="@font/gil_light"-->
+<!--            android:textColor="@color/title_text"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"/>-->
+
+<!--        <androidx.appcompat.widget.AppCompatEditText-->
+<!--            android:textSize="14sp"-->
+<!--            android:fontFamily="@font/gil_light"-->
+<!--            android:textStyle="bold"-->
+<!--            android:textColor="@color/title_text"-->
+<!--            android:inputType="textPassword"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"/>-->
+
+<!--        <androidx.appcompat.widget.AppCompatButton-->
+<!--            android:layout_marginTop="20dp"-->
+<!--            android:textColor="@color/white"-->
+<!--            android:text="Register Me"-->
+<!--            android:textAllCaps="false"-->
+<!--            android:fontFamily="@font/gil_light"-->
+<!--            android:textStyle="bold"-->
+<!--            android:textSize="18sp"-->
+<!--            android:backgroundTint="@color/buttonColor"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"/>-->
+
+<!--        <androidx.appcompat.widget.LinearLayoutCompat-->
+<!--            android:layout_marginTop="8dp"-->
+<!--            android:weightSum="1"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content">-->
+
+<!--            <TextView-->
+<!--                android:gravity="right"-->
+<!--                android:layout_weight="0.5"-->
+<!--                android:textSize="10sp"-->
+<!--                android:textColor="@color/title_text"-->
+<!--                android:fontFamily="@font/gil_light"-->
+<!--                android:text="Already have an account ? "-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"/>-->
+
+<!--            <TextView-->
+<!--                android:layout_weight="0.5"-->
+<!--                android:textSize="10sp"-->
+<!--                android:fontFamily="@font/gil_light"-->
+<!--                android:textColor="@color/buttonColor"-->
+<!--                android:textStyle="bold|italic"-->
+<!--                android:text="Log In Here"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"/>-->
+
+<!--        </androidx.appcompat.widget.LinearLayoutCompat>-->
+
+
+
+
+
+<!--    </androidx.appcompat.widget.LinearLayoutCompat>-->
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragmentContainerView"
+        android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
-
-
-
-
-    <TextView
-        android:fontFamily="@font/gil_bold"
-        android:textColor="@color/head_text"
-        android:gravity="center"
-        android:textSize="40sp"
-        android:text="Welcome To \nAuth Me"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
-    <TextView
-        android:textStyle="bold"
-        android:layout_marginTop="20dp"
-        android:fontFamily="@font/gil_light"
-        android:text="Register Your Self"
-        android:gravity="center"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="30dp"/>
-
-    <TextView
-        android:text="First Name"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:fontFamily="@font/gil_light"
-        android:textColor="@color/title_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
-    <androidx.appcompat.widget.AppCompatEditText
-        android:textSize="14sp"
-        android:fontFamily="@font/gil_light"
-        android:textStyle="bold"
-        android:textColor="@color/title_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
-    <TextView
-        android:textSize="16sp"
-        android:layout_marginTop="10dp"
-        android:text="Last Name"
-        android:textStyle="bold"
-        android:fontFamily="@font/gil_light"
-        android:textColor="@color/title_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
-    <androidx.appcompat.widget.AppCompatEditText
-        android:textSize="14sp"
-        android:fontFamily="@font/gil_light"
-        android:textStyle="bold"
-        android:textColor="@color/title_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
-        <TextView
-            android:textSize="16sp"
-            android:layout_marginTop="10dp"
-            android:text="Email Address"
-            android:textStyle="bold"
-            android:fontFamily="@font/gil_light"
-            android:textColor="@color/title_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
-
-        <androidx.appcompat.widget.AppCompatEditText
-            android:textSize="14sp"
-            android:fontFamily="@font/gil_light"
-            android:textStyle="bold"
-            android:textColor="@color/title_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
-        <TextView
-            android:textSize="16sp"
-            android:layout_marginTop="10dp"
-            android:text="Password"
-            android:textStyle="bold"
-            android:fontFamily="@font/gil_light"
-            android:textColor="@color/title_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
-        <androidx.appcompat.widget.AppCompatEditText
-            android:textSize="14sp"
-            android:fontFamily="@font/gil_light"
-            android:textStyle="bold"
-            android:textColor="@color/title_text"
-            android:inputType="textPassword"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:layout_marginTop="20dp"
-            android:textColor="@color/white"
-            android:text="Register Me"
-            android:textAllCaps="false"
-            android:fontFamily="@font/gil_light"
-            android:textStyle="bold"
-            android:textSize="18sp"
-            android:backgroundTint="@color/buttonColor"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:layout_marginTop="8dp"
-            android:weightSum="1"
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:gravity="right"
-                android:layout_weight="0.5"
-                android:textSize="10sp"
-                android:textColor="@color/title_text"
-                android:fontFamily="@font/gil_light"
-                android:text="Already have an account ? "
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-            <TextView
-                android:layout_weight="0.5"
-                android:textSize="10sp"
-                android:fontFamily="@font/gil_light"
-                android:textColor="@color/buttonColor"
-                android:textStyle="bold|italic"
-                android:text="Log In Here"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-        </androidx.appcompat.widget.LinearLayoutCompat>
-
-
-
-
-
-    </androidx.appcompat.widget.LinearLayoutCompat>
-
-
-
-</ScrollView>
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/auth_nav_graph" />
+</FrameLayout>

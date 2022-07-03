@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+       <!-- <TextView
+            android:id="@+id/loginTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="140dp"
+            android:textColor="@color/black"
+            android:text="Registeration"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/ETName"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginVertical="16dp"
+            android:background="@color/white"
+            android:hint="name"
+            android:outlineProvider="bounds"
+            android:padding="8dp"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/loginTitle"
+            app:layout_constraintVertical_bias="0.101" />
+
+        <EditText
+            android:id="@+id/ETEmail"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginVertical="16dp"
+            android:background="@color/white"
+            android:hint="@string/email"
+            android:outlineProvider="bounds"
+            android:padding="8dp"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ETName" />
+
+        <EditText
+            android:id="@+id/ETPassword"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginVertical="16dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/white"
+            android:hint="@string/password"
+            android:outlineProvider="bounds"
+            android:padding="8dp"
+            android:text="@={RegisterFrag._pwd}"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ETEmail" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/BtnRegister"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/register"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:background="@drawable/button_bg"
+            android:layout_marginHorizontal="100dp"
+            android:layout_marginTop="56dp"
+            android:padding="2dp"
+            app:layout_constraintTop_toBottomOf="@id/ETPassword" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="36dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/BtnRegister">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Already have account? "
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/TVLogin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Login"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+        </androidx.appcompat.widget.LinearLayoutCompat>-->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="14dp"
+        tools:context=".MainActivity">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+
+
+
+            <TextView
+                android:fontFamily="@font/gil_bold"
+                android:textColor="@color/head_text"
+                android:gravity="center"
+                android:textSize="40sp"
+                android:text="Welcome To \nAuth Me"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:textStyle="bold"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/gil_light"
+                android:text="Register Your Self"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="30dp"/>
+
+            <TextView
+                android:text="First Name"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/gil_light"
+                android:textColor="@color/title_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/ETFirstName"
+                android:textSize="14sp"
+                android:fontFamily="@font/gil_light"
+                android:textStyle="bold"
+                android:textColor="@color/title_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:textSize="16sp"
+                android:layout_marginTop="10dp"
+                android:text="Last Name"
+                android:textStyle="bold"
+                android:fontFamily="@font/gil_light"
+                android:textColor="@color/title_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/ETLastName"
+                android:textSize="14sp"
+                android:fontFamily="@font/gil_light"
+                android:textStyle="bold"
+                android:textColor="@color/title_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:textSize="16sp"
+                    android:layout_marginTop="10dp"
+                    android:text="Email Address"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/gil_light"
+                    android:textColor="@color/title_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/ETEmail"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/gil_light"
+                    android:textStyle="bold"
+                    android:textColor="@color/title_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:textSize="16sp"
+                    android:layout_marginTop="10dp"
+                    android:text="Password"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/gil_light"
+                    android:textColor="@color/title_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/ETPassword"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/gil_light"
+                    android:textStyle="bold"
+                    android:textColor="@color/title_text"
+                    android:inputType="textPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnRegister"
+                    android:layout_marginTop="20dp"
+                    android:textColor="@color/white"
+                    android:text="Register Me"
+                    android:textAllCaps="false"
+                    android:fontFamily="@font/gil_light"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
+                    android:background="@drawable/button_bg"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_marginTop="8dp"
+                    android:weightSum="1"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:gravity="right"
+                        android:layout_weight="0.5"
+                        android:textSize="10sp"
+                        android:textColor="@color/title_text"
+                        android:fontFamily="@font/gil_light"
+                        android:text="Already have an account ? "
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:id="@+id/tvLoginHere"
+                        android:layout_weight="0.5"
+                        android:textSize="10sp"
+                        android:fontFamily="@font/gil_light"
+                        android:textColor="@color/buttonColor"
+                        android:textStyle="bold|italic"
+                        android:text="Log In Here"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </ScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
