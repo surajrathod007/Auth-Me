@@ -2,8 +2,6 @@ package com.surajrathod.authme.fragment
 
 import android.app.Dialog
 import android.content.Context
-import android.content.Intent
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.text.TextUtils
 import android.view.LayoutInflater
@@ -11,16 +9,21 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
+import androidx.datastore.dataStore
+import androidx.datastore.preferences.core.edit
+import androidx.datastore.preferences.core.stringPreferencesKey
+import androidx.datastore.preferences.preferencesDataStore
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
-import com.surajrathod.authme.ProfileActivity
 import com.surajrathod.authme.R
 import com.surajrathod.authme.databinding.FragLoginBinding
 import com.surajrathod.authme.model.LoginReq
 import com.surajrathod.authme.model.SimpleResponse
 import com.surajrathod.authme.network.NetworkService
+import com.surajrathod.authme.util.DataStore
+import com.surajrathod.authme.util.DataStore.preferenceDataStoreAuth
 import com.surajrathod.authme.util.ExceptionHandler
 import com.surajrathod.authme.util.LoadingScreen
 import kotlinx.coroutines.launch
@@ -29,20 +32,6 @@ class LoginFrag : Fragment() {
     lateinit var binding : FragLoginBinding
     lateinit var d : LoadingScreen
     lateinit var dd : Dialog
-
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        val sharedPreference =  requireActivity().getSharedPreferences("PREFERENCE_NAME",Context.MODE_PRIVATE)
-        val l = sharedPreference.getBoolean("logged",false)
-
-        if(l){
-            val intent = Intent(activity,ProfileActivity::class.java)
-            startActivity(intent)
-        }
-
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -54,8 +43,6 @@ class LoginFrag : Fragment() {
         dd = d.loadingScreen()
         val email = binding.ETEmail
         val password = binding.ETPassword
-
-
         with(binding){
             TVRegister.setOnClickListener { findNavController().navigate(R.id.action_loginFrag_to_registerFrag) }
             TVForgotPassword.setOnClickListener { findNavController().navigate(R.id.action_loginFrag_to_forgotPasswordFragment) }
@@ -67,7 +54,6 @@ class LoginFrag : Fragment() {
         }
         return view
     }
-
     fun isDataFillled(view: TextView) : Boolean{
         if (TextUtils.isEmpty(view.text.toString().trim() { it <= ' ' })) {
             when(view){
@@ -94,30 +80,21 @@ class LoginFrag : Fragment() {
     fun onSimpleResponse(task : String,simpleResponse: SimpleResponse){
         if(simpleResponse.success){
             d.toggleDialog(dd)  // hide
+            lifecycleScope.launch{
+                storeStringPreferences(DataStore.JWT_TOKEN,simpleResponse.message)
+            }
             Toast.makeText(activity, "$task Successful", Toast.LENGTH_SHORT).show()
-
-            //Store Data
-
-            val sharedPreference =  requireActivity().getSharedPreferences("PREFERENCE_NAME",Context.MODE_PRIVATE)
-
-            var editor = sharedPreference.edit()
-            editor.putBoolean("logged",true)
-            editor.commit()
             // TODO : Navigation to ProfileActivity / DashboardActivity
-
-            val intent = Intent(activity,ProfileActivity::class.java)
-            startActivity(intent)
-
         }else{
             d.toggleDialog(dd)  // hide
             Toast.makeText(activity, simpleResponse.message, Toast.LENGTH_SHORT).show()
         }
     }
-
-    override fun onStart() {
-        super.onStart()
-
+    suspend fun storeStringPreferences(key: String ,value : String){
+        activity?.let{ dsContext ->
+            dsContext.preferenceDataStoreAuth.edit {
+                it[stringPreferencesKey(key)] = value
+            }
+        }
     }
-
-
 }
