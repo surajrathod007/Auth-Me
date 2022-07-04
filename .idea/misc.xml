@@ -3,23 +3,20 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/AAA/AndroidStudioProjects/Auth-Me/app/src/main/res/drawable/box_edittext.xml" value="0.17" />
-        <entry key="..\:/Users/AAA/AndroidStudioProjects/Auth-Me/app/src/main/res/drawable/button_bg.xml" value="0.17" />
-        <entry key="..\:/Users/AAA/AndroidStudioProjects/Auth-Me/app/src/main/res/drawable/profile_image_bg.xml" value="0.17" />
-        <entry key="..\:/Users/AAA/AndroidStudioProjects/Auth-Me/app/src/main/res/layout/activity_main.xml" value="0.25" />
-        <entry key="..\:/Users/AAA/AndroidStudioProjects/Auth-Me/app/src/main/res/layout/activity_profile.xml" value="0.25885416666666666" />
-        <entry key="..\:/Users/AAA/AndroidStudioProjects/Auth-Me/app/src/main/res/layout/frag_login.xml" value="0.25" />
-        <entry key="..\:/Users/AAA/AndroidStudioProjects/Auth-Me/app/src/main/res/layout/frag_register.xml" value="0.75" />
-        <entry key="..\:/Users/AAA/AndroidStudioProjects/Auth-Me/app/src/main/res/layout/fragment_forgot_password.xml" value="0.25885416666666666" />
-        <entry key="..\:/Users/AAA/AndroidStudioProjects/Auth-Me/app/src/main/res/layout/fragment_reset_password.xml" value="0.25" />
-        <entry key="..\:/Users/AAA/AndroidStudioProjects/Auth-Me/app/src/main/res/layout/loading_screen.xml" value="0.25885416666666666" />
-        <entry key="..\:/Users/AAA/AndroidStudioProjects/Auth-Me/app/src/main/res/layout/profile_card_views.xml" value="0.25885416666666666" />
-        <entry key="..\:/Users/AAA/AndroidStudioProjects/Auth-Me/app/src/main/res/layout/profile_cards.xml" value="0.22" />
+        <entry key="..\:/Users/Asus/AndroidStudioProjects/AuthMe/app/src/main/res/drawable/box_edittext.xml" value="0.147" />
         <entry key="..\:/Users/Asus/AndroidStudioProjects/AuthMe/app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="..\:/Users/Asus/AndroidStudioProjects/AuthMe/app/src/main/res/layout/activity_profile.xml" value="0.23645833333333333" />
+        <entry key="..\:/Users/Asus/AndroidStudioProjects/AuthMe/app/src/main/res/layout/activity_profile_edit.xml" value="0.264" />
+        <entry key="..\:/Users/Asus/AndroidStudioProjects/AuthMe/app/src/main/res/layout/frag_login.xml" value="0.22962962962962963" />
+        <entry key="..\:/Users/Asus/AndroidStudioProjects/AuthMe/app/src/main/res/layout/frag_register.xml" value="0.176" />
+        <entry key="..\:/Users/Asus/AndroidStudioProjects/AuthMe/app/src/main/res/layout/fragment_forgot_password.xml" value="0.23645833333333333" />
+        <entry key="..\:/Users/Asus/AndroidStudioProjects/AuthMe/app/src/main/res/layout/fragment_reset_password.xml" value="0.22962962962962963" />
+        <entry key="..\:/Users/Asus/AndroidStudioProjects/AuthMe/app/src/main/res/layout/loading_screen.xml" value="0.23645833333333333" />
+        <entry key="..\:/Users/Asus/AndroidStudioProjects/AuthMe/app/src/main/res/layout/profile_card_views.xml" value="0.23645833333333333" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
