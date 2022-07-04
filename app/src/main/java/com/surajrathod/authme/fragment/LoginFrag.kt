@@ -9,6 +9,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
+import androidx.datastore.dataStore
+import androidx.datastore.preferences.core.edit
+import androidx.datastore.preferences.core.stringPreferencesKey
+import androidx.datastore.preferences.preferencesDataStore
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -18,6 +22,8 @@ import com.surajrathod.authme.databinding.FragLoginBinding
 import com.surajrathod.authme.model.LoginReq
 import com.surajrathod.authme.model.SimpleResponse
 import com.surajrathod.authme.network.NetworkService
+import com.surajrathod.authme.util.DataStore
+import com.surajrathod.authme.util.DataStore.preferenceDataStoreAuth
 import com.surajrathod.authme.util.ExceptionHandler
 import com.surajrathod.authme.util.LoadingScreen
 import kotlinx.coroutines.launch
@@ -74,11 +80,21 @@ class LoginFrag : Fragment() {
     fun onSimpleResponse(task : String,simpleResponse: SimpleResponse){
         if(simpleResponse.success){
             d.toggleDialog(dd)  // hide
+            lifecycleScope.launch{
+                storeStringPreferences(DataStore.JWT_TOKEN,simpleResponse.message)
+            }
             Toast.makeText(activity, "$task Successful", Toast.LENGTH_SHORT).show()
             // TODO : Navigation to ProfileActivity / DashboardActivity
         }else{
             d.toggleDialog(dd)  // hide
             Toast.makeText(activity, simpleResponse.message, Toast.LENGTH_SHORT).show()
+        }
+    }
+    suspend fun storeStringPreferences(key: String ,value : String){
+        activity?.let{ dsContext ->
+            dsContext.preferenceDataStoreAuth.edit {
+                it[stringPreferencesKey(key)] = value
+            }
         }
     }
 }
