@@ -2,6 +2,7 @@ package com.surajrathod.authme.fragment
 
 import android.app.Dialog
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
 import android.view.LayoutInflater
@@ -17,6 +18,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
+import com.surajrathod.authme.ProfileActivity
 import com.surajrathod.authme.R
 import com.surajrathod.authme.databinding.FragLoginBinding
 import com.surajrathod.authme.model.LoginReq
@@ -85,6 +87,10 @@ class LoginFrag : Fragment() {
             }
             Toast.makeText(activity, "$task Successful", Toast.LENGTH_SHORT).show()
             // TODO : Navigation to ProfileActivity / DashboardActivity
+            val intent = Intent(requireActivity(), ProfileActivity::class.java)
+            intent.putExtra(DataStore.JWT_TOKEN,simpleResponse.message)
+            startActivity(intent)
+
         }else{
             d.toggleDialog(dd)  // hide
             Toast.makeText(activity, simpleResponse.message, Toast.LENGTH_SHORT).show()

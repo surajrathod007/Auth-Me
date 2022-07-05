@@ -7,6 +7,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".ProfileEdit">
 
+
+
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:padding="16dp"
         android:layout_width="match_parent"
@@ -24,7 +27,7 @@
 
             <TextView
                 android:textSize="18sp"
-                android:text="First Name : "
+                android:text="First Name  "
                 android:fontFamily="@font/gil_light"
                 android:textStyle="bold"
                 android:layout_width="match_parent"
@@ -38,7 +41,7 @@
 
             <TextView
                 android:textSize="18sp"
-                android:text="Last Name : "
+                android:text="Last Name "
                 android:fontFamily="@font/gil_light"
                 android:textStyle="bold"
                 android:layout_width="match_parent"
@@ -52,19 +55,53 @@
 
             <TextView
                 android:textSize="18sp"
-                android:text="Email : "
+                android:text="Email  "
                 android:fontFamily="@font/gil_light"
                 android:textStyle="bold"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
             <EditText
+                android:editable="false"
                 android:id="@+id/editEmailName"
                 android:textSize="16sp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
+            <TextView
+                android:textSize="18sp"
+                android:text="Phone Number  "
+                android:fontFamily="@font/gil_light"
+                android:textStyle="bold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <EditText
+                android:id="@+id/editPhone"
+                android:inputType="phone"
+                android:hint="Enter Your Phone Number..."
+                android:textSize="16sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:textSize="18sp"
+                android:text="Address "
+                android:fontFamily="@font/gil_light"
+                android:textStyle="bold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <EditText
+
+                android:id="@+id/editAddress"
+                android:hint="ex : Ahmedabad, India"
+                android:textSize="16sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
             <androidx.appcompat.widget.AppCompatButton
+                android:layout_marginTop="20dp"
                 android:textColor="@color/white"
                 android:background="@drawable/button_bg"
                 android:id="@+id/btnUpdateProfile"
@@ -80,5 +117,6 @@
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </ScrollView>
