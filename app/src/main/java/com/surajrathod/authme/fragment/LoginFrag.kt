@@ -9,10 +9,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
-import androidx.datastore.dataStore
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
-import androidx.datastore.preferences.preferencesDataStore
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -20,7 +18,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.surajrathod.authme.R
 import com.surajrathod.authme.databinding.FragLoginBinding
 import com.surajrathod.authme.model.LoginReq
-import com.surajrathod.authme.model.SimpleResponse
+import com.surajrathod.authme.model.User
 import com.surajrathod.authme.network.NetworkService
 import com.surajrathod.authme.util.DataStore
 import com.surajrathod.authme.util.DataStore.preferenceDataStoreAuth
@@ -69,25 +67,25 @@ class LoginFrag : Fragment() {
 
        lifecycleScope.launch {
            try {
-               val login = NetworkService.networkInstance.loginUser(LoginReq(email,password))
-               onSimpleResponse("Login",login)
+               val user = NetworkService.networkInstance.loginUser(LoginReq(email,password))
+               onSimpleResponse("Login",user)
            }catch (e : Exception){
                activity?.let { ExceptionHandler.catchOnContext(it, e) }
                d.toggleDialog(dd)
            }
        }
     }
-    fun onSimpleResponse(task : String,simpleResponse: SimpleResponse){
-        if(simpleResponse.success){
+    fun onSimpleResponse(task : String, user: User){
+        if(user.token!=null){
             d.toggleDialog(dd)  // hide
             lifecycleScope.launch{
-                storeStringPreferences(DataStore.JWT_TOKEN,simpleResponse.message)
+                storeStringPreferences(DataStore.JWT_TOKEN,user.token)
             }
             Toast.makeText(activity, "$task Successful", Toast.LENGTH_SHORT).show()
             // TODO : Navigation to ProfileActivity / DashboardActivity
         }else{
             d.toggleDialog(dd)  // hide
-            Toast.makeText(activity, simpleResponse.message, Toast.LENGTH_SHORT).show()
+            Toast.makeText(activity, "$task Failed", Toast.LENGTH_SHORT).show()
         }
     }
     suspend fun storeStringPreferences(key: String ,value : String){

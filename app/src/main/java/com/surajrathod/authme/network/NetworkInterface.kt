@@ -21,7 +21,7 @@ interface NetworkInterface {
 
     @Headers("Content-Type: application/json")
     @POST("$BASE_URL/auth/login")
-    suspend fun loginUser(@Body loginReq: LoginReq) : SimpleResponse
+    suspend fun loginUser(@Body loginReq: LoginReq) : User
 
     @Headers("Content-Type: application/json")
     @POST("$BASE_URL/auth/otp")
