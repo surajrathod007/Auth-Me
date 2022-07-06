@@ -1,5 +1,10 @@
 package com.surajrathod.authme.model
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+
+@Parcelize
 data class User(
     val emailId : String,
     val firstName : String,
@@ -8,4 +13,4 @@ data class User(
     val address : String ="",
     val token : String? = "",
     val otp : String = ""
-)
+) : Parcelable

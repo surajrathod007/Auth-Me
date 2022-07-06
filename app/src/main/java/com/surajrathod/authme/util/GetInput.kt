@@ -6,4 +6,6 @@ object GetInput {
     fun takeFrom(view : EditText):String{
         return view.text.toString()
     }
+
+
 }

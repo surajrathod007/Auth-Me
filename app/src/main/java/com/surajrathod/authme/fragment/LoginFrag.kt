@@ -83,10 +83,12 @@ class LoginFrag : Fragment() {
             lifecycleScope.launch{
                 storeStringPreferences(DataStore.JWT_TOKEN,user.token)
             }
-            Toast.makeText(activity, "$task Successful", Toast.LENGTH_SHORT).show()
+            Toast.makeText(activity, "$task Successful ${user.firstName}", Toast.LENGTH_SHORT).show()
             // TODO : Navigation to ProfileActivity / DashboardActivity
             val intent = Intent(requireActivity(), ProfileActivity::class.java)
-            intent.putExtra(DataStore.JWT_TOKEN,simpleResponse.message)
+            intent.putExtra(DataStore.JWT_TOKEN,user.token)
+
+            intent.putExtra("firstName",user.firstName)
             startActivity(intent)
 
         }else{
