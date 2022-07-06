@@ -17,7 +17,7 @@ class ProfileEdit : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this,R.layout.activity_profile_edit)
 
-        //val userdetail = intent.getParcelableExtra<User>("user")
+        val userdetail = intent.getSerializableExtra("user") as User
 
        // Toast.makeText(this,"${user!!.firstName}",Toast.LENGTH_SHORT).show()
         with(binding){

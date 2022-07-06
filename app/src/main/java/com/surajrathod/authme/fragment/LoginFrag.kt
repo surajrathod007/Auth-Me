@@ -88,7 +88,8 @@ class LoginFrag : Fragment() {
             val intent = Intent(requireActivity(), ProfileActivity::class.java)
             intent.putExtra(DataStore.JWT_TOKEN,user.token)
 
-            intent.putExtra("firstName",user.firstName)
+//            intent.putExtra("firstName",user.firstName)
+            intent.putExtra("user",user)
             startActivity(intent)
 
         }else{
