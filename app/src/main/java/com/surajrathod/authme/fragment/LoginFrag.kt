@@ -3,6 +3,7 @@ package com.surajrathod.authme.fragment
 import android.app.Dialog
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.text.TextUtils
 import android.view.LayoutInflater
@@ -18,6 +19,8 @@ import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
 import com.surajrathod.authme.ProfileActivity
 import com.surajrathod.authme.R
+import com.surajrathod.authme.database.UserDatabase
+import com.surajrathod.authme.database.UserEntity
 import com.surajrathod.authme.databinding.FragLoginBinding
 import com.surajrathod.authme.model.LoginReq
 import com.surajrathod.authme.model.User
@@ -26,6 +29,8 @@ import com.surajrathod.authme.util.DataStore
 import com.surajrathod.authme.util.DataStore.preferenceDataStoreAuth
 import com.surajrathod.authme.util.ExceptionHandler
 import com.surajrathod.authme.util.LoadingScreen
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
 class LoginFrag : Fragment() {
@@ -83,12 +88,32 @@ class LoginFrag : Fragment() {
             lifecycleScope.launch{
                 storeStringPreferences(DataStore.JWT_TOKEN,user.token)
             }
+
+            val sharedPreference =  requireActivity().getSharedPreferences("user_e",Context.MODE_PRIVATE)
+            var editor = sharedPreference.edit()
+            editor.putString("email",user.emailId)
+            editor.commit()
+
             Toast.makeText(activity, "$task Successful ${user.firstName}", Toast.LENGTH_SHORT).show()
             // TODO : Navigation to ProfileActivity / DashboardActivity
             val intent = Intent(requireActivity(), ProfileActivity::class.java)
             intent.putExtra(DataStore.JWT_TOKEN,user.token)
 
-            intent.putExtra("firstName",user.firstName)
+            val u = UserEntity(
+                emailId = user.emailId,
+                firstName = user.firstName,
+                lastName = user.lastName,
+                mobileNo = user.mobileNo,
+                address = user.address,
+                token = user.token,
+                otp = "hi"
+            )
+            val db = UserDatabase.getDatabase(this.requireContext())
+            GlobalScope.launch(Dispatchers.IO) {
+                db.userDao().insertUser(u)
+            }
+
+            //intent.putExtra("email",user.emailId)
             startActivity(intent)
 
         }else{
