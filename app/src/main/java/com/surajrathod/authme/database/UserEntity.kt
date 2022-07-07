@@ -1,15 +1,13 @@
-package com.surajrathod.authme.model
+package com.surajrathod.authme.database
 
-import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import kotlinx.android.parcel.Parcelize
 
 
+@Entity(tableName = "userTable")
+data class UserEntity(
 
-@Entity(tableName = "user_table")
-@Parcelize
-data class User(
+
     @PrimaryKey
     val emailId : String,
     val firstName : String,
@@ -18,4 +16,4 @@ data class User(
     val address : String ="",
     val token : String? = "",
     val otp : String = ""
-) : Parcelable
+)

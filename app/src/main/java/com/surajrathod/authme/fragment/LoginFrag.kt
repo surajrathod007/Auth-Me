@@ -26,6 +26,8 @@ import com.surajrathod.authme.util.DataStore
 import com.surajrathod.authme.util.DataStore.preferenceDataStoreAuth
 import com.surajrathod.authme.util.ExceptionHandler
 import com.surajrathod.authme.util.LoadingScreen
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
 class LoginFrag : Fragment() {
@@ -83,13 +85,32 @@ class LoginFrag : Fragment() {
             lifecycleScope.launch{
                 storeStringPreferences(DataStore.JWT_TOKEN,user.token)
             }
+
+            val sharedPreference =  requireActivity().getSharedPreferences("user_e",Context.MODE_PRIVATE)
+            var editor = sharedPreference.edit()
+            editor.putString("email",user.emailId)
+            editor.commit()
+
             Toast.makeText(activity, "$task Successful ${user.firstName}", Toast.LENGTH_SHORT).show()
             // TODO : Navigation to ProfileActivity / DashboardActivity
             val intent = Intent(requireActivity(), ProfileActivity::class.java)
             intent.putExtra(DataStore.JWT_TOKEN,user.token)
 
-//            intent.putExtra("firstName",user.firstName)
-            intent.putExtra("user",user)
+            val u = UserEntity(
+                emailId = user.emailId,
+                firstName = user.firstName,
+                lastName = user.lastName,
+                mobileNo = user.mobileNo,
+                address = user.address,
+                token = user.token,
+                otp = "hi"
+            )
+            val db = UserDatabase.getDatabase(this.requireContext())
+            GlobalScope.launch(Dispatchers.IO) {
+                db.userDao().insertUser(u)
+            }
+
+            //intent.putExtra("email",user.emailId)
             startActivity(intent)
 
         }else{
