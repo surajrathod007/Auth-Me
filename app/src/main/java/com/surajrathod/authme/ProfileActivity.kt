@@ -8,14 +8,19 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import androidx.datastore.preferences.core.edit
 import com.surajrathod.authme.database.UserDatabase
 import com.surajrathod.authme.databinding.ActivityProfileBinding
+import com.surajrathod.authme.fragment.LoginFrag
 import com.surajrathod.authme.model.User
 import com.surajrathod.authme.util.DataStore
+import com.surajrathod.authme.util.DataStore.preferenceDataStoreAuth
+import kotlinx.coroutines.*
 
 class ProfileActivity : AppCompatActivity() {
 
     lateinit var btnEdit : Button
+    lateinit var btnLogout : Button
 
 
     lateinit var txtUserName : TextView
@@ -26,6 +31,7 @@ class ProfileActivity : AppCompatActivity() {
 
         txtUserName = findViewById(R.id.tvDisplayName)
         txtEmail = findViewById(R.id.tvUserName)
+        btnLogout = findViewById(R.id.btnLogout)
 
         val sharedPreferences = getSharedPreferences("user_e", Context.MODE_PRIVATE)
         val e = sharedPreferences.getString("email","no email")
@@ -47,7 +53,32 @@ class ProfileActivity : AppCompatActivity() {
             //intent.putExtra("user",user)
             startActivity(intent)
         }
-        //Toast.makeText(this, token, Toast.LENGTH_SHORT).show() // remove it after testing
+
+        btnLogout.setOnClickListener {
+
+            try{
+
+            GlobalScope.launch(Dispatchers.IO){
+                preferenceDataStoreAuth.edit {
+                    it.clear()
+                }
+            }
+
+                Toast.makeText(this.applicationContext,"Logged Out !",Toast.LENGTH_SHORT).show()
+
+                finish()
+
+
+
+
+            }catch (e : Exception){
+                Toast.makeText(this.applicationContext,e.message,Toast.LENGTH_SHORT).show()
+            }
+        }
 
     }
+
+
+
+
 }

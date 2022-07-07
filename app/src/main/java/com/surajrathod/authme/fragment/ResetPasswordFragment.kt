@@ -117,7 +117,10 @@ class ResetPasswordFragment : Fragment() {
                 val response = NetworkService.networkInstance.resetPassword(email!!,otp!!,newpass)
                 onSimpleResponse("Reset",response)
             }catch (e : Exception){
-                activity?.let { ExceptionHandler.catchOnContext(it,e) }
+                d.toggleDialog(dd)
+                activity?.let {
+                    Toast.makeText(requireContext(),"Wrong Otp",Toast.LENGTH_SHORT).show()
+                }
             }
         }
     }
