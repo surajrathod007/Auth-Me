@@ -17,11 +17,8 @@ object ExceptionHandler {
     }
     fun catchOnContext(context : Context, e: String){
         val toast = Toast.makeText(context, e, Toast.LENGTH_LONG)
-        val view: View? = toast.view
-        if (view != null) {
-            view.background = context.resources.getDrawable(R.drawable.error_toast_bg)
-            toast.show()
-        }
+        toast.show()
+
     }
     fun successToast(){
 
