@@ -94,9 +94,8 @@ class LoginFrag : Fragment() {
             editor.commit()
 
             Toast.makeText(activity, "$task Successful ${user.firstName}", Toast.LENGTH_SHORT).show()
-            // TODO : Navigation to ProfileActivity / DashboardActivity
+
             val intent = Intent(requireActivity(), ProfileActivity::class.java)
-            intent.putExtra(DataStore.JWT_TOKEN,user.token)
 
             val u = UserEntity(
                 emailId = user.emailId,
@@ -112,7 +111,6 @@ class LoginFrag : Fragment() {
                 db.userDao().insertUser(u)
             }
 
-            //intent.putExtra("email",user.emailId)
             startActivity(intent)
             activity?.finish()
 

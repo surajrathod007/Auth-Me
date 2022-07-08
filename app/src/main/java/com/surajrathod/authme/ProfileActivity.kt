@@ -35,10 +35,7 @@ class ProfileActivity : AppCompatActivity() {
 
         val sharedPreferences = getSharedPreferences("user_e", Context.MODE_PRIVATE)
         val e = sharedPreferences.getString("email","no email")
-        val token = intent.getStringExtra(DataStore.JWT_TOKEN)
-        //val email = intent.getStringExtra("email")
 
-        //Toast.makeText(this,"Hii ${email} ",Toast.LENGTH_SHORT).show()
         val db = UserDatabase.getDatabase(this).userDao()
 
         val user = db.getUser(e!!)
