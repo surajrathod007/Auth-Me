@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.content.ContextCompat.startActivity
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.fragment.app.Fragment
@@ -22,6 +23,7 @@ import com.surajrathod.authme.database.UserDatabase
 import com.surajrathod.authme.database.UserEntity
 import com.surajrathod.authme.databinding.FragLoginBinding
 import com.surajrathod.authme.model.LoginReq
+import com.surajrathod.authme.model.LoginResponse
 import com.surajrathod.authme.model.User
 import com.surajrathod.authme.network.NetworkService
 import com.surajrathod.authme.util.DataStore
@@ -72,12 +74,21 @@ class LoginFrag : Fragment() {
         d.toggleDialog(dd) //show
 
        lifecycleScope.launch {
+           var response : LoginResponse? = null
            try {
-               val user = NetworkService.networkInstance.loginUser(LoginReq(email,password))
-               onSimpleResponse("Login",user)
-           }catch (e : Exception){
-               activity?.let { ExceptionHandler.catchOnContext(it, e.toString()) }
+                response =  NetworkService.networkInstance.loginUser(LoginReq(email,password))
+              }catch (e:Exception){
+               activity?.let { ExceptionHandler.catchOnContext(it, getString(R.string.generalErrorMsg)) }
                d.toggleDialog(dd)
+              }
+           if(response!=null){
+               if(response.simpleResponse.success){
+                   onSimpleResponse("Login",response.user)
+                   Toast.makeText(activity, response.simpleResponse.message, Toast.LENGTH_SHORT).show()
+               }else{
+                   activity?.let { ExceptionHandler.catchOnContext(it, response.simpleResponse.message) }
+                   d.toggleDialog(dd)
+               }
            }
        }
     }
@@ -92,8 +103,6 @@ class LoginFrag : Fragment() {
             var editor = sharedPreference.edit()
             editor.putString("email",user.emailId)
             editor.commit()
-
-            Toast.makeText(activity, "$task Successful ${user.firstName}", Toast.LENGTH_SHORT).show()
 
             val intent = Intent(requireActivity(), ProfileActivity::class.java)
 

@@ -1,9 +1,6 @@
 package com.surajrathod.authme.network
 
-import com.surajrathod.authme.model.LoginReq
-import com.surajrathod.authme.model.RegisterReq
-import com.surajrathod.authme.model.SimpleResponse
-import com.surajrathod.authme.model.User
+import com.surajrathod.authme.model.*
 import retrofit2.http.Body
 import retrofit2.http.Headers
 import retrofit2.http.POST
@@ -21,7 +18,7 @@ interface NetworkInterface {
 
     @Headers("Content-Type: application/json")
     @POST("$BASE_URL/auth/login")
-    suspend fun loginUser(@Body loginReq: LoginReq) : User
+    suspend fun loginUser(@Body loginReq: LoginReq) : LoginResponse
 
     @Headers("Content-Type: application/json")
     @POST("$BASE_URL/auth/otp")
