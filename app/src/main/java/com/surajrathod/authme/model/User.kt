@@ -8,7 +8,7 @@ import java.io.Serializable
 
 
 @Entity(tableName = "user_table")
-@Parcelize
+//@Parcelize
 data class User(
     @PrimaryKey
     val emailId : String,
