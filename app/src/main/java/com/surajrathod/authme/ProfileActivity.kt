@@ -66,11 +66,8 @@ class ProfileActivity : AppCompatActivity() {
 
                 Toast.makeText(this.applicationContext,"Logged Out !",Toast.LENGTH_SHORT).show()
 
+                startActivity(Intent(this,MainActivity::class.java))
                 finish()
-
-
-
-
             }catch (e : Exception){
                 Toast.makeText(this.applicationContext,e.message,Toast.LENGTH_SHORT).show()
             }

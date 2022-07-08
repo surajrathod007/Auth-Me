@@ -18,6 +18,8 @@ import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
 import com.surajrathod.authme.ProfileActivity
 import com.surajrathod.authme.R
+import com.surajrathod.authme.database.UserDatabase
+import com.surajrathod.authme.database.UserEntity
 import com.surajrathod.authme.databinding.FragLoginBinding
 import com.surajrathod.authme.model.LoginReq
 import com.surajrathod.authme.model.User
@@ -112,6 +114,7 @@ class LoginFrag : Fragment() {
 
             //intent.putExtra("email",user.emailId)
             startActivity(intent)
+            activity?.finish()
 
         }else{
             d.toggleDialog(dd)  // hide
