@@ -95,9 +95,11 @@ class ProfileActivity : AppCompatActivity() {
             }
             cvNotifications.btnSeeMore.setOnClickListener {
             // TODO : Handled while Integration
+                Toast.makeText(this@ProfileActivity, "Opens Notification", Toast.LENGTH_SHORT).show()
             }
             cvShippings.btnSeeMore.setOnClickListener {
             // TODO : Handled while Integration
+                Toast.makeText(this@ProfileActivity, "Opens Shipping", Toast.LENGTH_SHORT).show()
             }
         }
     }
