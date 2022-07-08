@@ -66,7 +66,7 @@ class ForgotPasswordFragment : Fragment() {
             findNavController().navigate(R.id.action_forgotPasswordFragment_to_resetPasswordFragment,bundle)
         }else{
             d.toggleDialog(dd)  // hide
-            Toast.makeText(activity, simpleResponse.message, Toast.LENGTH_SHORT).show()
+            activity?.let { ExceptionHandler.catchOnContext(it,simpleResponse.message) }
         }
     }
 }
