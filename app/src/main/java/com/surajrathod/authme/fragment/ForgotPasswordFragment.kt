@@ -46,7 +46,7 @@ class ForgotPasswordFragment : Fragment() {
                             val response = NetworkService.networkInstance.sendOtp(email!!)
                             onSimpleResponse("Sent",response)
                         }catch (e : Exception){
-                            activity?.let { ExceptionHandler.catchOnContext(it, e) }
+                            activity?.let { ExceptionHandler.catchOnContext(it, e.toString()) }
                             d.toggleDialog(dd)
                         }
                     }

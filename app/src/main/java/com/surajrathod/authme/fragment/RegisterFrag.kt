@@ -71,7 +71,7 @@ class RegisterFrag : Fragment() {
                val register =NetworkService.networkInstance.registerUser(RegisterReq(firstName,lastName,email,password))
                onSimpleResponse("Registration",register)
            }catch (e : Exception){
-               activity?.let { ExceptionHandler.catchOnContext(it, e) }
+               activity?.let { ExceptionHandler.catchOnContext(it, "Email already registered") }
                d.toggleDialog(dd)
            }
        }

@@ -1,16 +1,29 @@
 package com.surajrathod.authme.util
 
+import android.R.id.message
 import android.content.Context
+import android.graphics.PorterDuff
 import android.util.Log
+import android.view.View
+import android.widget.TextView
 import android.widget.Toast
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
+import com.surajrathod.authme.R
+import retrofit2.Response.error
+
 
 object ExceptionHandler {
-    fun catchOnLog(e:Exception){
-        Log.d("catchOnLog", "$e")
+    fun catchOnLog(e:String){
+        Log.d("catchOnLog", e)
     }
-    fun catchOnContext(context : Context, e:Exception){
-            Toast.makeText(context, "$e", Toast.LENGTH_SHORT).show()
+    fun catchOnContext(context : Context, e: String){
+        val toast = Toast.makeText(context, e, Toast.LENGTH_LONG)
+        val view: View? = toast.view
+        if (view != null) {
+            view.background = context.resources.getDrawable(R.drawable.error_toast_bg)
+            toast.show()
+        }
+    }
+    fun successToast(){
+
     }
 }

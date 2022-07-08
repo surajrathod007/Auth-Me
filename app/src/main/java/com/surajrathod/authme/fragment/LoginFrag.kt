@@ -76,7 +76,7 @@ class LoginFrag : Fragment() {
                val user = NetworkService.networkInstance.loginUser(LoginReq(email,password))
                onSimpleResponse("Login",user)
            }catch (e : Exception){
-               activity?.let { ExceptionHandler.catchOnContext(it, e) }
+               activity?.let { ExceptionHandler.catchOnContext(it, e.toString()) }
                d.toggleDialog(dd)
            }
        }
