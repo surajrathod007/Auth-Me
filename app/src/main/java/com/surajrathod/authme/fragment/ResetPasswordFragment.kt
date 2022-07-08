@@ -61,6 +61,8 @@ class ResetPasswordFragment : Fragment() {
                otp_textbox_three = findViewById(R.id.etOtp3)
                otp_textbox_four = findViewById(R.id.etOtp4)
                verify_otp = findViewById(R.id.btnReset)
+               password = findViewById(R.id.etPassword)
+               confirmPassword = findViewById(R.id.etConfirmPassword)
            }
 
 
@@ -72,20 +74,21 @@ class ResetPasswordFragment : Fragment() {
         otp_textbox_three.addTextChangedListener(GenericTextWatcher(otp_textbox_three, edit))
         otp_textbox_four.addTextChangedListener(GenericTextWatcher(otp_textbox_four, edit))
 
-         password = binding.etPassword
-         confirmPassword = binding.etConfirmPassword
 
         verify_otp.setOnClickListener {
             if(!isDataFillled(password))else if(!isDataFillled(confirmPassword))else{
-
-                if(isEnteredOtp()){
-                    email = arguments?.get("email") as String?
-//                    Toast.makeText(activity, "$email", Toast.LENGTH_SHORT).show()
-                    d.toggleDialog(dd)
-                    verifyAndResetPassword()
-                }else{
-                    Snackbar.make(view, "Please Enter OTP", 1000).show()
+                Log.d(TAG, "${password.text},${confirmPassword.text}")
+                if(password.text.toString()!=confirmPassword.text.toString()){
+                    ExceptionHandler.catchOnContext(activity!!,"Recheck Both Password")
+                    return@setOnClickListener
                 }
+            }
+            if(isEnteredOtp()){
+                email = arguments?.get("email") as String?
+                d.toggleDialog(dd)
+                verifyAndResetPassword()
+            }else{
+                Snackbar.make(view, "Please Enter OTP", 1000).show()
             }
         }
         return view
@@ -119,7 +122,7 @@ class ResetPasswordFragment : Fragment() {
             }catch (e : Exception){
                 d.toggleDialog(dd)
                 activity?.let {
-                    Toast.makeText(requireContext(),"Wrong Otp",Toast.LENGTH_SHORT).show()
+                    activity?.let { ExceptionHandler.catchOnContext(it,"Wrong OTP") }
                 }
             }
         }
@@ -131,7 +134,7 @@ class ResetPasswordFragment : Fragment() {
             findNavController().navigate(R.id.action_resetPasswordFragment_to_loginFrag)
         }else{
             d.toggleDialog(dd)  // hide
-            Toast.makeText(activity, simpleResponse.message, Toast.LENGTH_SHORT).show()
+            activity?.let { ExceptionHandler.catchOnContext(it,simpleResponse.message) }
         }
     }
 }
