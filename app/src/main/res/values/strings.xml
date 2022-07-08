@@ -6,4 +6,5 @@
     <string name="title_activity_authentication">Authentication</string>
     <string name="register">Register</string>
     <string name="resetPWtxt">Enter your registered email we will send \nyou a link for reset password</string>
+    <string name="generalErrorMsg">Something went wrong</string>
 </resources>
