@@ -89,15 +89,15 @@ class ProfileActivity : AppCompatActivity() {
             cvNotifications.tvUserName.text = "Notifications"
             cvShippings.tvUserName.text = "Shipping"
             // Navigators
-            cvOrders.btnSeeMore.setOnClickListener {
+            cvOrders.root.setOnClickListener {
             // TODO : Handled while Integration
                 Toast.makeText(this@ProfileActivity, "Opens Orders", Toast.LENGTH_SHORT).show()
             }
-            cvNotifications.btnSeeMore.setOnClickListener {
+            cvNotifications.root.setOnClickListener {
             // TODO : Handled while Integration
                 Toast.makeText(this@ProfileActivity, "Opens Notification", Toast.LENGTH_SHORT).show()
             }
-            cvShippings.btnSeeMore.setOnClickListener {
+            cvShippings.root.setOnClickListener {
             // TODO : Handled while Integration
                 Toast.makeText(this@ProfileActivity, "Opens Shipping", Toast.LENGTH_SHORT).show()
             }
