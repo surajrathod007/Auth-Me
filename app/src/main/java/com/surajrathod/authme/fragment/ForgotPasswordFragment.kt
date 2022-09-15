@@ -63,6 +63,7 @@ class ForgotPasswordFragment : Fragment() {
             Toast.makeText(activity, "$task Successful", Toast.LENGTH_SHORT).show()
             val bundle = Bundle()
             bundle.putString("email",email)
+            bundle.putString("otp",simpleResponse.message)
             findNavController().navigate(R.id.action_forgotPasswordFragment_to_resetPasswordFragment,bundle)
         }else{
             d.toggleDialog(dd)  // hide
