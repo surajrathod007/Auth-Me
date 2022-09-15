@@ -3,6 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/AAA/AndroidStudioProjects/Auth-Me/app/src/main/res/drawable/button_bg.xml" value="0.261" />
+        <entry key="..\:/Users/AAA/AndroidStudioProjects/Auth-Me/app/src/main/res/drawable/error_toast_bg.xml" value="0.261" />
+        <entry key="..\:/Users/AAA/AndroidStudioProjects/Auth-Me/app/src/main/res/layout/activity_profile.xml" value="0.25" />
+        <entry key="..\:/Users/AAA/AndroidStudioProjects/Auth-Me/app/src/main/res/layout/loading_screen.xml" value="0.33" />
+        <entry key="..\:/Users/AAA/AndroidStudioProjects/Auth-Me/app/src/main/res/layout/profile_cards.xml" value="0.2159042325780248" />
         <entry key="..\:/Users/Asus/AndroidStudioProjects/AuthMe/app/src/main/res/drawable/box_edittext.xml" value="0.147" />
         <entry key="..\:/Users/Asus/AndroidStudioProjects/AuthMe/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/Users/Asus/AndroidStudioProjects/AuthMe/app/src/main/res/layout/activity_profile.xml" value="0.264" />
